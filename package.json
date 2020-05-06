@@ -1,0 +1,19 @@
+{
+  "name": "red-contrib-signaltower",
+  "version": "1.0.0",
+  "description": "Nodes to connect to TOP Blacklist & Message Gateway",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "node-red": {
+    "nodes": {
+      "signaltower": "signaltower.js"
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "superagent": "^5.2.2"
+  }
+}

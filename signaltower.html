@@ -1,0 +1,118 @@
+<script type="text/html" data-template-name="signaltower-config">
+    <div class="form-row">
+        <label for="node-config-input-endpoint"><i class="icon-bookmark"></i> Endpoint</label>
+        <input type="text" id="node-config-input-endpoint">
+    </div>
+     <div class="form-row">
+        <label for="node-config-input-apiPath"><i class="icon-bookmark"></i> Api Version</label>
+        <input type="text" id="node-config-input-apiPath">
+    </div>
+     <div class="form-row">
+        <label for="node-config-input-username"><i class="icon-bookmark"></i> Username</label>
+        <input type="text" id="node-config-input-username">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-password"><i class="icon-bookmark"></i> Password</label>
+        <input type="password" id="node-config-input-password">
+    </div>
+</script>
+
+<script type="text/html" data-template-name="signaltower-bl-check">
+ <div class="form-row">
+        <label for="node-input-config"><i class="fa fa-globe"></i> Configurazione</label>
+        <input type="text" id="node-input-config">
+    </div>
+     <div class="form-row">
+        <label for="node-input-scenario"><i class="fa fa-globe"></i> Scenario</label>
+        <input type="text" id="node-input-scenario">
+    </div>
+</script>
+
+<script type="text/html" data-template-name="signaltower-bl-insert">
+ <div class="form-row">
+        <label for="node-input-config"><i class="fa fa-globe"></i> Configurazione</label>
+        <input type="text" id="node-input-config">
+    </div>
+     <div class="form-row">
+        <label for="node-input-scenario"><i class="fa fa-globe"></i> Scenario</label>
+        <input type="text" id="node-input-scenario">
+    </div>
+</script>
+
+<script type="text/html" data-template-name="signaltower-bl-remove">
+ <div class="form-row">
+        <label for="node-input-config"><i class="fa fa-globe"></i> Configurazione</label>
+        <input type="text" id="node-input-config">
+    </div>
+     <div class="form-row">
+        <label for="node-input-scenario"><i class="fa fa-globe"></i> Scenario</label>
+        <input type="text" id="node-input-scenario">
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('signaltower-bl-check', {
+        category: 'signal tower',
+        icon:'bridge.svg',
+        name:"ST BL",
+        defaults: {
+            config: { required:true, type: "signaltower-config" },
+            scenario:{ required:false,value:'*' },
+        },
+        outputs:1,
+        inputs:1,
+        label: function () {
+            return  "Blacklist Check " + (this.scenario||"");
+        }
+    });
+</script>
+  
+<script type="text/javascript">
+    RED.nodes.registerType('signaltower-bl-remove', {
+        category: 'signal tower',
+        icon:'bridge.svg',
+        name:"ST BL Remove",
+        defaults: {
+            config: { required:true, type: "signaltower-config" },
+            scenario:{ required:false,value:'*' },
+        },
+        outputs:1,
+        inputs:1,
+        label: function () {
+            return  "Blacklist Remove " + (this.scenario||"");
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('signaltower-bl-insert', {
+        category: 'signal tower',
+        icon:'bridge.svg',
+        name:"ST BL Insert",
+        defaults: {
+            config: { required:true, type: "signaltower-config" },
+            scenario:{ required:false,value:'*' },
+        },
+        outputs:1,
+        inputs:1,
+        label: function () {
+            return  "Blacklist Insert " + (this.scenario||"");
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('signaltower-config', {
+        category: 'config',
+        defaults: {
+            endpoint: { value: 'https://signal-tower.topcs.it', required: true },
+            apiPath : { value: '/api/v1/', required: true },
+            username: { value: '', required: true },
+            password: { value: '', required: true },
+            
+        },
+        label: function () {
+            return this.endpoint;
+        }
+    });
+</script>
