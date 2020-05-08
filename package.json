@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-signaltower",
-  "version": "1.0.3",
+  "version": "1.0.3a",
   "description": "Nodes to connect to TOP Blacklist & Message Gateway",
   "main": "index.js",
   "scripts": {
